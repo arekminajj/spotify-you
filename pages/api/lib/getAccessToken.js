@@ -15,7 +15,6 @@ async function getAccessToken(code) {
           });
   
           const data = await result.json();
-          console.log(data)
           return data.access_token;
   }
 
