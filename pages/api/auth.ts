@@ -7,11 +7,6 @@ export default async (req:NextApiRequest, res:NextApiResponse) => {
     query: { code },
   } = req
 
-  if(code===null ?? code.toString()=="") {
-    res.statusCode = 400;
-    res.end("code parameter is required.")
-  }
-  
   //TESTING HERE IF IT WORKS FOR NOW
   var token = await getAccessToken(code.toString());
   console.log(token)
