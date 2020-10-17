@@ -1,6 +1,9 @@
-import { NextApiRequest, NextApiResponse } from "next"
-import getAccessToken from './lib/getAccessToken'
+import { NextApiRequest, NextApiResponse } from "next";
+import getAccessToken from './lib/getAccessToken';
 import getAuthorizedUser from './lib/getAuthorizedUser';
+import getRefreshedAccessToken from './lib/getRefreshedAccessToken';
+import getUsersTopTracks from './lib/getUsersTopTracks';
+import getUsersTopArtists from './lib/getUsersTopArtists';
 
 export default async (req:NextApiRequest, res:NextApiResponse) => {
   const {
@@ -8,10 +11,17 @@ export default async (req:NextApiRequest, res:NextApiResponse) => {
   } = req
 
   //TESTING HERE IF IT WORKS FOR NOW
-  var token = await getAccessToken(code.toString());
-  console.log(token)
-  var user = await getAuthorizedUser(token);
-  console.log(user);
+  var data = await getAccessToken(code.toString());
+  var token = data.access_token;
+  console.log(token);
+  token = await getRefreshedAccessToken(data.refresh_token);
+  //var user = await getAuthorizedUser(token);
+  //console.log(user);
+  var topArtists = await getUsersTopArtists(token, "50", "long_term")
+  console.log(topArtists)
+  //token = await getRefreshedAccessToken(data.refresh_token);
+  //var topTracks = await getUsersTopTracks(token, "50", "long_term");
+  //console.log(topTracks);
 
   res.statusCode = 200
   res.json({ status: "Success!" })
