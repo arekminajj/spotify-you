@@ -15,7 +15,6 @@ async function getRefreshedAccessToken(refresh_token) {
           });
   
           const data = await result.json();
-          console.log(data);
           return data.access_token;
   }
 

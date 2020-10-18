@@ -9,7 +9,6 @@ function getAuthCode() {
     '&response_type=code&redirect_uri=' +
     redirect_uri +
     '&scope=user-top-read%20user-read-recently-played%20user-read-currently-playing';
-    console.log(url);
     return url;
 }
 
