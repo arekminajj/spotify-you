@@ -3,7 +3,8 @@ async function getUsersRecentlyPlayedTracks(token, limit) {
     const response = await fetch(url, {
         method: 'GET',
         headers: {
-            'Authorization': 'Bearer ' + token
+            'Authorization': 'Bearer ' + token,
+            'Accept': 'application/json',
         }
     })
     if(response.status == 204) {
