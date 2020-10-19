@@ -1,5 +1,5 @@
 const client_id = 'ea5147c9c40b425fa19cdddc4d055e99'
-const redirect_uri = 'http://localhost:3000/api/auth';
+const redirect_uri = 'http://localhost:3000/stats/user';
 
 function getAuthCode() {
     const base_url = 'https://accounts.spotify.com/authorize';

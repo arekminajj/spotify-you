@@ -10,7 +10,7 @@ async function getAccessToken(code) {
               body: new URLSearchParams({
                 'grant_type': 'authorization_code',
                 'code': code,
-                'redirect_uri': 'http://localhost:3000/api/auth'
+                'redirect_uri': 'http://localhost:3000/stats/user'
               })
           });
   
