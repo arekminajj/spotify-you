@@ -16,7 +16,7 @@ const Stats = ({ data }) => {
   return (
     <Container>
       <Navbar>
-        <Navbar.Brand href="#home">Spotify-You 🎵</Navbar.Brand>
+        <Navbar.Brand href="https://spotify-you.vercel.app/">Spotify-You 🎵</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
