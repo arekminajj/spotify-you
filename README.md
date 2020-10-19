@@ -1,6 +1,8 @@
 # spotify-you
 Spotify listening stats web application, build in Next.js
 
+![](screenshots/screenshot_1.png)
+
 ## Contributing
 
 1. Fork the Project
