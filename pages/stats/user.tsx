@@ -1,4 +1,4 @@
-import { Container, Navbar, Card, Table, Col, Row } from "react-bootstrap";
+import { Container, Navbar, Card, Table, Col, Row, Button } from "react-bootstrap";
 
 export async function getServerSideProps(context) {
   const code = context.query.code;
@@ -13,6 +13,19 @@ export async function getServerSideProps(context) {
 }
 
 const Stats = ({ data }) => {
+  if (data.data.user.external_urls.spotify===undefined) {
+    return(
+      <Container>
+        <h1>You are not loged in!</h1>
+        <Button href="https://spotify-you.vercel.app/" variant="primary">Try again</Button>
+      </Container>
+    )
+  }
+  if(data.data.currentlyPlaying.item.name===undefined) {
+    data.data.currentlyPlaying.item.name = "None";
+    data.data.currentlyPlaying.item.artists[0] = "None";
+  }
+
   return (
     <Container>
       <Navbar>
