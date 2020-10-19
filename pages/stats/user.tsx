@@ -45,16 +45,20 @@ const Stats = ({ data }) => {
         <Card.Body>
           <Card.Title>{data.data.user.display_name}</Card.Title>
           <Card.Text>
-            Now playing: {data.data.currentlyPlaying.item.name} by: {data.data
-              .currentlyPlaying.item.artists.map(function (d, idx) {
-                return (<a
-                  target="_blank"
-                  href={d.external_urls.spotify}
-                  key={idx}
-                >
-                  🎨 {d.name} &nbsp;
-                </a>);
-              })}
+          {data.data.currentlyPlaying.is_playing == true &&
+            <div>
+              Now playing: {data.data.currentlyPlaying.item.name} by: {data.data
+                .currentlyPlaying.item.artists.map(function (d, idx) {
+                  return (<a
+                    target="_blank"
+                    href={d.external_urls.spotify}
+                    key={idx}
+                  >
+                    🎨 {d.name} &nbsp;
+                  </a>);
+                })}
+              </div>
+            }
           </Card.Text>
         </Card.Body>
       </Card>
