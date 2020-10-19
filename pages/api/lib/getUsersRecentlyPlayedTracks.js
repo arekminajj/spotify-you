@@ -6,6 +6,12 @@ async function getUsersRecentlyPlayedTracks(token, limit) {
             'Authorization': 'Bearer ' + token
         }
     })
+    if(response.status == 204) {
+        let res = {
+            is_playing: false
+        };
+        return res;
+    }
 
     const recentlyPlayed = await response.json();
     return recentlyPlayed;
