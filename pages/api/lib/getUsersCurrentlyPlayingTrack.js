@@ -3,7 +3,7 @@ async function getUsersCurrentlyPlayingTrack(token) {
     const response = await fetch(url, {
         method: 'GET',
         headers: {
-            'Authorization': 'Bearer ' + token
+            'Authorization': 'Bearer ' + token,
             'Accept': 'application/json',
         }
     })
