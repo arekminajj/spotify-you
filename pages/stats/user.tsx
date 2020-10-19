@@ -1,23 +1,142 @@
-import { Container } from 'react-bootstrap';
+import { Container, Navbar, Card, Table, Col, Row } from "react-bootstrap";
 
 export async function getServerSideProps(context) {
   const code = context.query.code;
   const url = `http://localhost:3000/api/auth?code=` + code;
   const res = await fetch(url, {
-    method: 'GET'
+    method: "GET",
   });
-  const data = await res.json()
+  const data = await res.json();
   return {
-    props: { data }, 
-  }
+    props: { data },
+  };
 }
 
-const Stats = ({data}) => {
+const Stats = ({ data }) => {
   return (
     <Container>
-      hello
+      <Navbar>
+        <Navbar.Brand href="#home">Spotify-You</Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+            <a target="_blank" href={data.data.user.external_urls.spotify}>
+              {data.data.user.display_name}
+            </a>
+          </Navbar.Text>
+        </Navbar.Collapse>
+      </Navbar>
+      <div style={{ height: "2rem" }}></div>
+      <Card style={{ width: "18rem" }}>
+        <Card.Img variant="top" src={data.data.user.images[0].url} />
+        <Card.Body>
+          <Card.Title>{data.data.user.display_name}</Card.Title>
+          <Card.Text>
+            Now playing: {data.data.currentlyPlaying.item.name} by: {data.data
+              .currentlyPlaying.item.artists.map(function (d, idx) {
+                return (<a
+                  target="_blank"
+                  href={d.external_urls.spotify}
+                  key={idx}
+                >
+                  🎨 {d.name} &nbsp;
+                </a>);
+              })}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      <div style={{ height: "2rem" }}></div>
+      <Row>
+        <Col md>
+          <h1>Recently played</h1>
+          {data.data.recentlyPlayed.items.map(function (d, idx) {
+            return (
+              <Table striped bordered hover variant="dark">
+                <thead>
+                  <tr>
+                    <th style={{ width: "3rem" }}>#</th>
+                    <th>Track</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{idx + 1}</td>
+                    <td>
+                      {d.track.name} by {d.track.artists.map(function (d, idx) {
+                        return (<a
+                          target="_blank"
+                          href={d.external_urls.spotify}
+                          key={idx}
+                        >
+                          🎨 {d.name} &nbsp;
+                        </a>);
+                      })}
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            );
+          })}
+        </Col>
+        <Col md>
+          <h1>Top Artists</h1>
+          {data.data.topArtists.items.map(function (d, idx) {
+            return (
+              <Table striped bordered hover variant="dark">
+                <thead>
+                  <tr>
+                    <th style={{ width: "3rem" }}>#</th>
+                    <th>Artist</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{idx + 1}</td>
+                    <td>
+                      <a target="_blank" href={d.external_urls.spotify}>
+                        {d.name}
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            );
+          })}
+        </Col>
+        <Col md>
+          <h1>Top Songs</h1>
+          {data.data.topTracks.items.map(function (d, idx) {
+            return (
+              <Table striped bordered hover variant="dark">
+                <thead>
+                  <tr>
+                    <th style={{ width: "3rem" }}>#</th>
+                    <th>Track</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{idx + 1}</td>
+                    <td>
+                      {d.name} by {d.artists.map(function (d, idx) {
+                        return (<a
+                          target="_blank"
+                          href={d.external_urls.spotify}
+                          key={idx}
+                        >
+                         🎨 {d.name}
+                        </a>);
+                      })}
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            );
+          })}
+        </Col>
+      </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default Stats
+export default Stats;
