@@ -10,7 +10,7 @@ async function getRefreshedAccessToken(refresh_token) {
               body: new URLSearchParams({
                 'grant_type': 'refresh_token',
                 'refresh_token': refresh_token,
-                'redirect_uri': 'http://localhost:3000/api/auth'
+                'redirect_uri': 'https://spotify-you.vercel.app/stats/user'
               })
           });
   

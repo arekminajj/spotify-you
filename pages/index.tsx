@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <Container>
       <Navbar>
-        <Navbar.Brand href="#home">Spotify-You</Navbar.Brand>
+        <Navbar.Brand>Spotify-You 🎵</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>

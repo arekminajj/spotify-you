@@ -2,7 +2,7 @@ import { Container, Navbar, Card, Table, Col, Row } from "react-bootstrap";
 
 export async function getServerSideProps(context) {
   const code = context.query.code;
-  const url = `http://localhost:3000/api/auth?code=` + code;
+  const url = `https://spotify-you.vercel.app/api/auth?code=` + code;
   const res = await fetch(url, {
     method: "GET",
   });
@@ -16,7 +16,7 @@ const Stats = ({ data }) => {
   return (
     <Container>
       <Navbar>
-        <Navbar.Brand href="#home">Spotify-You</Navbar.Brand>
+        <Navbar.Brand href="#home">Spotify-You 🎵</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
