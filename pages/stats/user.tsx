@@ -1,4 +1,4 @@
-import { Container, Navbar, Card, Table, Col, Row } from "react-bootstrap";
+import { Container, Navbar, Card, Table, Col, Row, Image } from "react-bootstrap";
 
 export async function getServerSideProps(context) {
   const code = context.query.code;
@@ -41,7 +41,7 @@ const Stats = ({ data }) => {
                     href={d.external_urls.spotify}
                     key={idx}
                   >
-                    🎨 {d.name} &nbsp;
+                    💥 {d.name} &nbsp;
                   </a>);
                 })}
               </div>
@@ -66,13 +66,14 @@ const Stats = ({ data }) => {
                   <tr>
                     <td>{idx + 1}</td>
                     <td>
-                      {d.track.name} by {d.track.artists.map(function (d, idx) {
+                    <Image height={45} width={45} src={d.track.album.images[0].url} rounded />
+                    🔥{d.track.name} by {d.track.artists.map(function (d, idx) {
                         return (<a
                           target="_blank"
                           href={d.external_urls.spotify}
                           key={idx}
                         >
-                          🎨 {d.name} &nbsp;
+                          💥 {d.name} &nbsp;
                         </a>);
                       })}
                     </td>
@@ -98,7 +99,8 @@ const Stats = ({ data }) => {
                     <td>{idx + 1}</td>
                     <td>
                       <a target="_blank" href={d.external_urls.spotify}>
-                        {d.name}
+                      <Image height={45} width={45} src={d.images[0].url} rounded />
+                      🔥{d.name}
                       </a>
                     </td>
                   </tr>
@@ -122,13 +124,14 @@ const Stats = ({ data }) => {
                   <tr>
                     <td>{idx + 1}</td>
                     <td>
-                      {d.name} by {d.artists.map(function (d, idx) {
+                    <Image height={45} width={45} src={d.album.images[0].url} rounded />
+                    🔥{d.name} by {d.artists.map(function (d, idx) {
                         return (<a
                           target="_blank"
                           href={d.external_urls.spotify}
                           key={idx}
                         >
-                         🎨 {d.name}
+                         💥 {d.name}
                         </a>);
                       })}
                     </td>
