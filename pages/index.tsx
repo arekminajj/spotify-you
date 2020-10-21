@@ -24,6 +24,10 @@ export default function Home() {
           <Button href={url} variant="primary">Click here!</Button>
         </p>
       </Jumbotron>
+      <h2 className="text-center">Check out project's repo on GitHub!</h2>
+      <a target="_blank" href="https://github.com/arekminajj/spotify-you">
+      <Image className="mx-auto d-block" height={280} width={280} src={"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"} />
+      </a>
     </Container>
   );
 }

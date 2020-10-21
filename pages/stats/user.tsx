@@ -27,28 +27,39 @@ const Stats = ({ data }) => {
         </Navbar.Collapse>
       </Navbar>
       <div style={{ height: "2rem" }}></div>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={data.data.user.images[0].url} />
-        <Card.Body>
-          <Card.Title>{data.data.user.display_name}</Card.Title>
-          <Card.Text>
-          {data.data.currentlyPlaying.is_playing == true &&
-            <div>
-              Now playing: {data.data.currentlyPlaying.item.name} by: {data.data
-                .currentlyPlaying.item.artists.map(function (d, idx) {
-                  return (<a
-                    target="_blank"
-                    href={d.external_urls.spotify}
-                    key={idx}
-                  >
-                    💥 {d.name} &nbsp;
-                  </a>);
-                })}
-              </div>
-            }
-          </Card.Text>
-        </Card.Body>
-      </Card>
+      <Row>
+        <Col>
+         <Card style={{ width: "18rem" }}>
+            <Card.Img variant="top" src={data.data.user.images[0].url} />
+           <Card.Body>
+              <Card.Title>{data.data.user.display_name}</Card.Title>
+              <Card.Text>
+             {data.data.currentlyPlaying.is_playing == true &&
+                <div>
+                 Now playing: {data.data.currentlyPlaying.item.name} by: {data.data
+                   .currentlyPlaying.item.artists.map(function (d, idx) {
+                      return (<a
+                        target="_blank"
+                        href={d.external_urls.spotify}
+                        key={idx}
+                      >
+                        💥 {d.name} &nbsp;
+                     </a>);
+                    })}
+                 </div>
+                }
+             </Card.Text>
+           </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <h1 className="text-center">Spotify-You 🎵</h1>
+          <h4 className="text-center">Check out project's repo on GitHub!</h4>
+          <a target="_blank" href="https://github.com/arekminajj/spotify-you">
+          <Image className="mx-auto d-block" height={200} width={200} src={"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"} />
+          </a>
+        </Col>
+      </Row>
       <div style={{ height: "2rem" }}></div>
       <Row>
         <Col md>
