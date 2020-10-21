@@ -27,8 +27,8 @@ const Stats = ({ data }) => {
         </Navbar.Collapse>
       </Navbar>
       <div style={{ height: "2rem" }}></div>
-      <Row>
-        <Col>
+      <Row className="text-center">
+        <Col className="d-flex justify-content-center">
          <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={data.data.user.images[0].url} />
            <Card.Body>
@@ -53,6 +53,7 @@ const Stats = ({ data }) => {
           </Card>
         </Col>
         <Col>
+          <div style={{ height: "2rem" }}></div>
           <h1 className="text-center">Spotify-You 🎵</h1>
           <h4 className="text-center">Check out project's repo on GitHub!</h4>
           <a target="_blank" href="https://github.com/arekminajj/spotify-you">
