@@ -6,6 +6,7 @@ async function getUsersRecentlyPlayedTracks(token, limit) {
             'Authorization': 'Bearer ' + token,
         }
     })
+    
     const recentlyPlayed = await response.json();
     return recentlyPlayed;
 }

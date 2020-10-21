@@ -1,4 +1,4 @@
-import { Container, Navbar, Card, Table, Col, Row, Button } from "react-bootstrap";
+import { Container, Navbar, Card, Table, Col, Row } from "react-bootstrap";
 
 export async function getServerSideProps(context) {
   const code = context.query.code;
