@@ -1,4 +1,5 @@
 import { Container, Navbar, Card, Table, Col, Row, Image } from "react-bootstrap";
+import Head from 'next/head';
 
 export async function getServerSideProps(context) {
   const code = context.query.code;
@@ -15,6 +16,9 @@ export async function getServerSideProps(context) {
 const Stats = ({ data }) => {
   return (
     <Container>
+      <Head>
+        <title>Spotify-You - Statistics</title>
+      </Head>
       <Navbar>
         <Navbar.Brand href="https://spotify-you.vercel.app/">Spotify-You 🎵</Navbar.Brand>
         <Navbar.Toggle />

@@ -19,7 +19,7 @@ export default async (req:NextApiRequest, res:NextApiResponse) => {
   const user = await getAuthorizedUser(token);
   const topArtists = await getUsersTopArtists(token, "50", "long_term")
   const topTracks = await getUsersTopTracks(token, "50", "long_term");
-  const currentlyPlaying = await getUsersCurrentlyPlayingTrack(token); //FOR NOW USER HAVE TO PLAY SMTH SO IT WONT CRASH
+  const currentlyPlaying = await getUsersCurrentlyPlayingTrack(token);
   const recentlyPlayed = await getUsersRecentlyPlayedTracks(token, "50");
 
   res.statusCode = 200
