@@ -31,7 +31,7 @@ const Stats = ({ data }) => {
         </Navbar.Collapse>
       </Navbar>
       <div style={{ height: "2rem" }}></div>
-      <h1 className="justify-content-center">You are not loged in no more😔 Click <a href={getAuthCodeUrl()}>{' '}<Button variant="primary">here</Button>{' '}</a> to log in again.</h1>
+      <h1 className="justify-content-center">You are not loged in no more😔 Click <a href={getAuthCodeUrl()}>here</a> to log in again.</h1>
       <div style={{ height: "4rem" }}></div>
       <h2 className="text-center">Check out project's repo on GitHub!</h2>
       <a target="_blank" href="https://github.com/arekminajj/spotify-you">
