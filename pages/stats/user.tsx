@@ -1,5 +1,6 @@
 import { Container, Navbar, Card, Table, Col, Row, Image } from "react-bootstrap";
 import Head from 'next/head';
+import getAuthCodeUrl from '../lib/getAuthCodeUrl';
 
 export async function getServerSideProps(context) {
   const code = context.query.code;
@@ -14,6 +15,31 @@ export async function getServerSideProps(context) {
 }
 
 const Stats = ({ data }) => {
+  let type = typeof(data.data.user.display_name);
+  if(type=='undefined') {
+    return(
+      <Container>
+        <Head>
+        <title>Spotify-You - You are not loged in!</title>
+        </Head>
+        <Navbar>
+        <Navbar.Brand href="/">Spotify-You 🎵</Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+          </Navbar.Text>
+        </Navbar.Collapse>
+      </Navbar>
+      <div style={{ height: "2rem" }}></div>
+      <h1 className="justify-content-center">You are not loged in no more😔 Click <a href={getAuthCodeUrl()}>here</a> to log in again.</h1>
+      <div style={{ height: "4rem" }}></div>
+      <h2 className="text-center">Check out project's repo on GitHub!</h2>
+      <a target="_blank" href="https://github.com/arekminajj/spotify-you">
+      <Image className="mx-auto d-block" height={280} width={280} src={"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"} />
+      </a>
+      </Container>
+    )
+  }
   return (
     <Container>
       <Head>
