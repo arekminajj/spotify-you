@@ -1,10 +1,10 @@
-import { Container, Navbar, Card, Table, Col, Row, Image, Button } from "react-bootstrap";
+import { Container, Navbar, Card, Table, Col, Row, Image } from "react-bootstrap";
 import Head from 'next/head';
 import getAuthCodeUrl from '../lib/getAuthCodeUrl';
 
 export async function getServerSideProps(context) {
   const code = context.query.code;
-  const url = `https://spotify-you.vercel.app/api/auth?code=` + code;
+  const url = process.env.BASE_URL + code;
   const res = await fetch(url, {
     method: "GET",
   });
