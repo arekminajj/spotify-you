@@ -14,7 +14,6 @@ async function getUsersCurrentlyPlayingTrack(token) {
         };
         return res;
     }
-
     const currentlyPlaying = await response.json();
     return currentlyPlaying;
 }

@@ -6,7 +6,6 @@ async function getUsersTopArtists(token, limit, time_range) {
             'Authorization': 'Bearer ' + token
         }
     })
-
     const topArtists = await response.json();
     return topArtists;
 }

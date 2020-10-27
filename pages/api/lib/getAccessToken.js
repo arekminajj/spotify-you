@@ -10,7 +10,7 @@ async function getAccessToken(code) {
               body: new URLSearchParams({
                 'grant_type': 'authorization_code',
                 'code': code,
-                'redirect_uri': 'https://spotify-you.vercel.app/stats/user'
+                'redirect_uri': process.env.REDIRECT_URI
               })
           });
   

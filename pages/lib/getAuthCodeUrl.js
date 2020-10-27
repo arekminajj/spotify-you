@@ -1,5 +1,5 @@
 const client_id = 'ea5147c9c40b425fa19cdddc4d055e99'
-const redirect_uri = 'https://spotify-you.vercel.app/stats/user';
+const redirect_uri = process.env.REDIRECT_URI;
 
 function getAuthCode() {
     const base_url = 'https://accounts.spotify.com/authorize';
