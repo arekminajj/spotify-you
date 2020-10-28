@@ -94,7 +94,7 @@ const Stats = ({ data }) => {
       <div style={{ height: "2rem" }}></div>
       <Row>
         <Col md>
-          <h1>Recently played</h1>
+          <h1 className="text-center">Recently played 🕒</h1>
           {data.data.recentlyPlayed.items.map(function (d, idx) {
             return (
               <Table striped bordered hover variant="dark">
@@ -126,7 +126,7 @@ const Stats = ({ data }) => {
           })}
         </Col>
         <Col md>
-          <h1>Top Artists</h1>
+          <h1 className="text-center">Top Artists 🧑</h1>
           {data.data.topArtists.items.map(function (d, idx) {
             return (
               <Table striped bordered hover variant="dark">
@@ -152,7 +152,7 @@ const Stats = ({ data }) => {
           })}
         </Col>
         <Col md>
-          <h1>Top Songs</h1>
+          <h1 className="text-center">Top Songs 🎸</h1>
           {data.data.topTracks.items.map(function (d, idx) {
             return (
               <Table striped bordered hover variant="dark">
