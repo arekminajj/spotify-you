@@ -94,7 +94,7 @@ const Stats = ({ data }) => {
       <div style={{ height: "2rem" }}></div>
       <Row>
         <Col md>
-          <h1 className="text-center">Recently played 🕒</h1>
+          <h1 className="text-center">Recently played</h1>
           {data.data.recentlyPlayed.items.map(function (d, idx) {
             return (
               <Table striped bordered hover variant="dark">
