@@ -14,29 +14,86 @@ export async function getServerSideProps(context) {
   };
 }
 
+//if user profile pic is undefined then place spotify logo
+function RenderProfileCard(props) {
+  const data = props.data
+  if (typeof data.user.images[0] !== 'undefined') {
+    return (
+      <Card style={{ width: "18rem" }}>
+        <Card.Img variant="top" src={data.user.images[0].url} />
+        <Card.Body>
+          <Card.Title>{data.user.display_name}</Card.Title>
+          <Card.Text>
+            {data.currentlyPlaying.is_playing == true &&
+              <div>
+                Now playing: {data.currentlyPlaying.item.name} by: {data
+                  .currentlyPlaying.item.artists.map(function (d, idx) {
+                    return (<a
+                      target="_blank"
+                      href={d.external_urls.spotify}
+                      key={idx}
+                    >
+                      💥 {d.name} &nbsp;
+                    </a>);
+                  })}
+              </div>
+            }
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    )
+  }
+  else {
+    return (
+      <Card style={{ width: "18rem" }}>
+        <Card.Img variant="top" src={''} />
+        <Card.Body>
+          <Card.Title>{data.user.display_name}</Card.Title>
+          <Card.Text>
+            {data.currentlyPlaying.is_playing == true &&
+              <div>
+                Now playing: {data.currentlyPlaying.item.name} by: {data
+                  .currentlyPlaying.item.artists.map(function (d, idx) {
+                    return (<a
+                      target="_blank"
+                      href={d.external_urls.spotify}
+                      key={idx}
+                    >
+                      💥 {d.name} &nbsp;
+                    </a>);
+                  })}
+              </div>
+            }
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    )
+  }
+}
+
 const Stats = ({ data }) => {
-  let type = typeof(data.data.user.display_name);
-  if(type=='undefined') {
-    return(
+  let type = typeof (data.data.user.display_name);
+  if (type == 'undefined') {
+    return (
       <Container>
         <Head>
-        <title>Spotify-You - You are not loged in!</title>
+          <title>Spotify-You - You are not loged in!</title>
         </Head>
         <Navbar>
-        <Navbar.Brand href="/">Spotify-You 🎵</Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-          </Navbar.Text>
-        </Navbar.Collapse>
-      </Navbar>
-      <div style={{ height: "2rem" }}></div>
-      <h1 className="justify-content-center">You are not loged in no more😔 Click <a href={getAuthCodeUrl()}>here</a> to log in again.</h1>
-      <div style={{ height: "4rem" }}></div>
-      <h2 className="text-center">Check out project's repo on GitHub!</h2>
-      <a target="_blank" href="https://github.com/arekminajj/spotify-you">
-      <Image className="mx-auto d-block" height={280} width={280} src={"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"} />
-      </a>
+          <Navbar.Brand href="/">Spotify-You 🎵</Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
+            <Navbar.Text>
+            </Navbar.Text>
+          </Navbar.Collapse>
+        </Navbar>
+        <div style={{ height: "2rem" }}></div>
+        <h1 className="justify-content-center">You are not loged in no more😔 Click <a href={getAuthCodeUrl()}>here</a> to log in again.</h1>
+        <div style={{ height: "4rem" }}></div>
+        <h2 className="text-center">Check out project's repo on GitHub!</h2>
+        <a target="_blank" href="https://github.com/arekminajj/spotify-you">
+          <Image className="mx-auto d-block" height={280} width={280} src={"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"} />
+        </a>
       </Container>
     )
   }
@@ -59,35 +116,14 @@ const Stats = ({ data }) => {
       <div style={{ height: "2rem" }}></div>
       <Row className="text-center">
         <Col className="d-flex justify-content-center">
-         <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={data.data.user.images[0].url} />
-           <Card.Body>
-              <Card.Title>{data.data.user.display_name}</Card.Title>
-              <Card.Text>
-             {data.data.currentlyPlaying.is_playing == true &&
-                <div>
-                 Now playing: {data.data.currentlyPlaying.item.name} by: {data.data
-                   .currentlyPlaying.item.artists.map(function (d, idx) {
-                      return (<a
-                        target="_blank"
-                        href={d.external_urls.spotify}
-                        key={idx}
-                      >
-                        💥 {d.name} &nbsp;
-                     </a>);
-                    })}
-                 </div>
-                }
-             </Card.Text>
-           </Card.Body>
-          </Card>
+          <RenderProfileCard data={data.data} />
         </Col>
         <Col>
           <div style={{ height: "2rem" }}></div>
           <h1 className="text-center">Spotify-You 🎵</h1>
           <h4 className="text-center">Check out project's repo on GitHub!</h4>
           <a target="_blank" href="https://github.com/arekminajj/spotify-you">
-          <Image className="mx-auto d-block" height={200} width={200} src={"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"} />
+            <Image className="mx-auto d-block" height={200} width={200} src={"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"} />
           </a>
         </Col>
       </Row>
@@ -108,7 +144,7 @@ const Stats = ({ data }) => {
                   <tr>
                     <td>{idx + 1}</td>
                     <td>
-                    <Image height={45} width={45} src={d.track.album.images[0].url} rounded />
+                      <Image height={45} width={45} src={d.track.album.images[0].url} rounded />
                     🔥{d.track.name} by {d.track.artists.map(function (d, idx) {
                         return (<a
                           target="_blank"
@@ -141,7 +177,7 @@ const Stats = ({ data }) => {
                     <td>{idx + 1}</td>
                     <td>
                       <a target="_blank" href={d.external_urls.spotify}>
-                      <Image height={45} width={45} src={d.images[0].url} rounded />
+                        <Image height={45} width={45} src={d.images[0].url} rounded />
                       🔥{d.name}
                       </a>
                     </td>
@@ -166,14 +202,14 @@ const Stats = ({ data }) => {
                   <tr>
                     <td>{idx + 1}</td>
                     <td>
-                    <Image height={45} width={45} src={d.album.images[0].url} rounded />
+                      <Image height={45} width={45} src={d.album.images[0].url} rounded />
                     🔥{d.name} by {d.artists.map(function (d, idx) {
                         return (<a
                           target="_blank"
                           href={d.external_urls.spotify}
                           key={idx}
                         >
-                         💥 {d.name}
+                          💥 {d.name}
                         </a>);
                       })}
                     </td>
