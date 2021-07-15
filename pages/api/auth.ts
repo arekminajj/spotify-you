@@ -17,8 +17,8 @@ export default async (req:NextApiRequest, res:NextApiResponse) => {
   token = await getRefreshedAccessToken(token_Data.refresh_token);
 
   const user = await getAuthorizedUser(token);
-  const topArtists = await getUsersTopArtists(token, "50", "long_term")
-  const topTracks = await getUsersTopTracks(token, "50", "long_term");
+  const topArtists = await getUsersTopArtists(token, "50", "medium_term")
+  const topTracks = await getUsersTopTracks(token, "50", "medium_term");
   const currentlyPlaying = await getUsersCurrentlyPlayingTrack(token);
   const recentlyPlayed = await getUsersRecentlyPlayedTracks(token, "50");
 
